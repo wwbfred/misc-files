@@ -48,7 +48,14 @@
             }
         ],
         "rules": [{
-                "port": 53,
+                "type": "logical",
+                "mode": "or",
+                "rules": [{
+                        "port": 53
+                    }, {
+                        "protocol": "dns"
+                    }
+                ],
                 "outbound": "dns-out"
             }, {
                 "port": 853,
@@ -97,8 +104,8 @@
         }
     ],
     "outbounds": [{
-	    // 粘贴你的客户端配置，需要保留 "tag": "proxy"
-            "tag": "proxy"
+            // 粘贴你的客户端配置，需要保留
+            "tag": "proxy",
         }, {
             "type": "direct",
             "tag": "direct"
